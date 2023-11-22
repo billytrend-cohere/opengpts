@@ -1,5 +1,6 @@
 from enum import Enum
 
+from .xml.cohere import get_cohere_xml_agent
 from .openai import get_openai_function_agent
 from .xml.agent import get_xml_agent
 
@@ -10,9 +11,11 @@ class GizmoAgentType(str, Enum):
     AZURE_OPENAI = "GPT 4 (Azure OpenAI)"
     CLAUDE2 = "Claude 2"
     BEDROCK_CLAUDE2 = "Claude 2 (Amazon Bedrock)"
+    COHERE = "Cohere"
 
 
 __all__ = [
+    "get_cohere_xml_agent"
     "get_openai_function_agent",
     "get_xml_agent",
     "GizmoAgentType",

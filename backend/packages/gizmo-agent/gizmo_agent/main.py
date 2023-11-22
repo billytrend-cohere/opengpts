@@ -13,6 +13,7 @@ from langchain.schema.runnable import (
 from gizmo_agent.agent_types import (
     GizmoAgentType,
     get_openai_function_agent,
+    get_cohere_xml_agent,
     get_xml_agent,
 )
 from gizmo_agent.tools import TOOL_OPTIONS, TOOLS, AvailableTools, get_retrieval_tool
@@ -51,6 +52,8 @@ class ConfigurableAgent(RunnableBinding):
                 _tools.append(TOOLS[_tool]())
         if agent == GizmoAgentType.GPT_35_TURBO:
             _agent = get_openai_function_agent(_tools, system_message)
+        elif agent == GizmoAgentType.COHERE:
+            _agent = get_cohere_xml_agent(_tools, system_message)
         # elif agent == GizmoAgentType.GPT_4:
         #     _agent = get_openai_function_agent(_tools, system_message, gpt_4=True)
         elif agent == GizmoAgentType.AZURE_OPENAI:
